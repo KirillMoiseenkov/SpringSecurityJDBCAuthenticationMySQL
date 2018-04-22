@@ -4,6 +4,7 @@ package com.javasampleapproach.springsecurity.jdbcauthentication.controller;
 import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impelemetations.RoleDAOImp;
 import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impelemetations.UserDAOImp;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Some;
+import com.javasampleapproach.springsecurity.jdbcauthentication.service.authService.UserDetailServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,30 +30,15 @@ public class TestRestController {
     @Autowired
     RoleDAOImp roleDAOImp;
 
+    @Autowired
+    UserDetailServiceImp userDetailServiceImp;
+
     @RequestMapping(value = "/jdbcTest", method = RequestMethod.GET)
     public void getUser(String username) throws SQLException {
 
-       /* JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-
-        String sql = "select username,password, enabled from users where username=?";
-
-        List<String> s;
-        s = jdbcTemplate.query(sql,new Object[]{"kirill"},new RowMapper<String>() {
-            public String mapRow(ResultSet rs, int rowNum) throws SQLException {
-                return rs.getString("password");
-            }
-        });
+//        System.out.println(userDetailServiceImp.userExists("kirill"));
 
 
-        Md5PasswordEncoder md5PasswordEncoder = new Md5PasswordEncoder();
-
-      String encodePassword = md5PasswordEncoder.encodePassword(s.get(0),null);
-
-
-        System.out.println(encodePassword + "first");*/
-
-        System.out.println(userDAOImp.getByUserName("kirill").toString());
-        System.out.println(roleDAOImp.getByUserName("kirill").toString());
     }
 
     @RequestMapping(value = "/another", method = RequestMethod.GET)

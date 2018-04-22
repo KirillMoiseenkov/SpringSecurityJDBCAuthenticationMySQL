@@ -12,27 +12,29 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class UserDetailServiceImp implements UserDetailsService{
-
+public class UserDetailServiceImp extends JdbcUserDetailsManager //implements UserDetailsService
+{
     @Autowired
     RoleService roleService;
 
     @Autowired
     UserService userService;
 
-
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-        String password = encoder.encode(userService.getByUserName(userName).getPassword());
+        //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+
+        String password = encoder.encodePassword(userService.getByUserName(userName).getPassword(),null);
 
         String role = roleService.getByUserName(userName).getRole();
 

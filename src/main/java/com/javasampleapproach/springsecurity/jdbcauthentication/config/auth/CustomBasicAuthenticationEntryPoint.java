@@ -1,4 +1,4 @@
-package com.javasampleapproach.springsecurity.jdbcauthentication.config;
+package com.javasampleapproach.springsecurity.jdbcauthentication.config.auth;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
