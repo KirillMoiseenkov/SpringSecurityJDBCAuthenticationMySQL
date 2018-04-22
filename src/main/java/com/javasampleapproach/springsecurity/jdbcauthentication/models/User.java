@@ -11,6 +11,7 @@ public class User{
     private String password;
 
 
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -19,5 +20,15 @@ public class User{
         this.password = password;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

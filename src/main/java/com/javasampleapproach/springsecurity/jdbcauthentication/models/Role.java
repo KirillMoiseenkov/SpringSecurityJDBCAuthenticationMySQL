@@ -2,22 +2,30 @@ package com.javasampleapproach.springsecurity.jdbcauthentication.models;
 
 public class Role {
 
-    private Long id;
-    private String name;
+    private String userName;
+    private String role;
 
-    public Long getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getName() {
-        return name;
+    public String getRole() {
+        return role;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "userName='" + userName + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
