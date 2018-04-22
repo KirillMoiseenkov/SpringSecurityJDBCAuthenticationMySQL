@@ -1,5 +1,7 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.models;
 
+import java.util.List;
+
 public class Role {
 
     private String userName;

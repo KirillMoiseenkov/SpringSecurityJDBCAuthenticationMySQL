@@ -1,6 +1,7 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.controller;
 
 
+import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impelemetations.RoleDAOImp;
 import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impelemetations.UserDAOImp;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Some;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class TestRestController {
     @Autowired
     UserDAOImp userDAOImp;
 
+    @Autowired
+    RoleDAOImp roleDAOImp;
+
     @RequestMapping(value = "/jdbcTest", method = RequestMethod.GET)
     public void getUser(String username) throws SQLException {
 
@@ -48,7 +52,7 @@ public class TestRestController {
         System.out.println(encodePassword + "first");*/
 
         System.out.println(userDAOImp.getByUserName("kirill").toString());
-
+        System.out.println(roleDAOImp.getByUserName("kirill").toString());
     }
 
     @RequestMapping(value = "/another", method = RequestMethod.GET)

@@ -27,7 +27,7 @@ public class RoleDAOImp implements IRoleDAO {
 
         String sql = "select username, role from user_roles where username=?";
 
-        List<Role> users = jdbcTemplate.query(sql,new Object[]{userName},new RowMapper<Role>() {
+        List<Role> roles = jdbcTemplate.query(sql,new Object[]{userName},new RowMapper<Role>() {
             public Role mapRow(ResultSet rs, int rowNum) throws SQLException {
                 role.setUserName(userName);
                 role.setRole(rs.getString("role"));

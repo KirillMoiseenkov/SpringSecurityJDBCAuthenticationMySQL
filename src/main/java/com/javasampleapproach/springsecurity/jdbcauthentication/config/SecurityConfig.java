@@ -2,6 +2,7 @@ package com.javasampleapproach.springsecurity.jdbcauthentication.config;
 
 import javax.sql.DataSource;
 
+import com.javasampleapproach.springsecurity.jdbcauthentication.service.authService.UserDetailServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -23,16 +25,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private static String REALM="MY_TEST_REALM";
 
 	@Autowired
+    UserDetailServiceImp userDetailServiceImp;
+
+	@Autowired
 	DataSource dataSource;
  
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource).
-				usersByUsernameQuery("select username,password, enabled from users where username=?")
-				.authoritiesByUsernameQuery("select username, role from user_roles where username=?");
+	    auth.userDetailsService(userDetailServiceImp).passwordEncoder(passwordEncoder());
 	}
 
-
+	public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
