@@ -36,7 +36,7 @@ public class TestRestController {
     @RequestMapping(value = "/jdbcTest", method = RequestMethod.GET)
     public void getUser(String username) throws SQLException {
 
-//        System.out.println(userDetailServiceImp.userExists("kirill"));
+        System.out.println(userDetailServiceImp.userExists("kirill"));
 
 
     }
