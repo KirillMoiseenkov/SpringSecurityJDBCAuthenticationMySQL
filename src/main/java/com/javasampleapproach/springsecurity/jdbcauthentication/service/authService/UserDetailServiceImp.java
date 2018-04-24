@@ -27,7 +27,9 @@ public class UserDetailServiceImp extends JdbcUserDetailsManager
     @Autowired
     Md5PasswordEncoder md5PasswordEncoder;
 
-    @Override
+
+
+    /*@Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
         String password = md5PasswordEncoder.encodePassword(userService.getByUserName(userName).getPassword(),null);
@@ -38,6 +40,8 @@ public class UserDetailServiceImp extends JdbcUserDetailsManager
 
         User user = new User(userName,password, Arrays.asList(authority));
 
+
+
         return user;
-    }
+    }*/
 }

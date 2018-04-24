@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,9 +31,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	Md5PasswordEncoder md5PasswordEncoder;
 
 	@Autowired
+	DaoAuthenticationProvider daoAuthenticationProvider;
+
+
+	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-	    auth.userDetailsService(userDetailServiceImp).passwordEncoder(md5PasswordEncoder);
-	    }
+	    auth.authenticationProvider(daoAuthenticationProvider);
+	    //userDetailsService(userDetailServiceImp).passwordEncoder(md5PasswordEncoder);
+
+
+	}
 
 
 	    @Override
@@ -56,19 +64,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
 	}
 
-	/*@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurerAdapter() {
-
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins("/another")
-						.allowedHeaders("*");
-
-			}
-
-		};
-	}*/
 
 
 
