@@ -9,30 +9,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailServiceImp extends JdbcUserDetailsManager {
-    @Autowired
-    RoleService roleService;
-
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    Md5PasswordEncoder md5PasswordEncoder;
 
 
-
-    /*@Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-
-        String password = md5PasswordEncoder.encodePassword(userService.getByUserName(userName).getPassword(),null);
-
-        String role = roleService.getByUserName(userName).getRole();
-
-        GrantedAuthority authority = new SimpleGrantedAuthority(role);
-
-        User user = new User(userName,password, Arrays.asList(authority));
-
-
-
-        return user;
-    }*/
 }
