@@ -1,7 +1,5 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.config.auth;
 
-import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impelemetations.RoleDAOImp;
-import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impelemetations.UserDAOImp;
 import com.javasampleapproach.springsecurity.jdbcauthentication.service.simpeServices.RoleService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.service.simpeServices.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +16,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 @Component
-public class CustomAuthenticationManager implements AuthenticationManager{
+public class CustomAuthenticationManager implements AuthenticationManager {
 
     @Autowired
     UserService userService;
@@ -35,9 +32,6 @@ public class CustomAuthenticationManager implements AuthenticationManager{
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-        System.out.println("__________________________________________");
-
-
         String username = authentication.getPrincipal() + "";
         String password = authentication.getCredentials() + "";
 
@@ -47,7 +41,7 @@ public class CustomAuthenticationManager implements AuthenticationManager{
         GrantedAuthority authority = new SimpleGrantedAuthority(role);
 
 
-        User user = new User(username,bDpass ,Arrays.asList(authority));
+        User user = new User(username, bDpass, Arrays.asList(authority));
 
 
         System.out.println(user.getPassword());
@@ -58,7 +52,7 @@ public class CustomAuthenticationManager implements AuthenticationManager{
         if (user.isEnabled()) {
             throw new DisabledException("1001");
         }
-        if (md5PasswordEncoder.isPasswordValid(password, user.getPassword(),null)) {
+        if (md5PasswordEncoder.isPasswordValid(password, user.getPassword(), null)) {
             throw new BadCredentialsException("1000");
         }
 

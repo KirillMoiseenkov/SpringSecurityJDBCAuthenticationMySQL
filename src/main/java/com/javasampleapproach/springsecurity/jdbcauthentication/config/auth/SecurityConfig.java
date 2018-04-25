@@ -1,7 +1,5 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.config.auth;
 
-import javax.sql.DataSource;
-
 import com.javasampleapproach.springsecurity.jdbcauthentication.service.authService.UserDetailServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -15,56 +13,48 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableAutoConfiguration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	private static String REALM="MY_TEST_REALM";
+    private static String REALM = "MY_TEST_REALM";
 
-	@Autowired
+    @Autowired
     UserDetailServiceImp userDetailServiceImp;
 
-	@Autowired
-	DataSource dataSource;
-
-	@Autowired
-	Md5PasswordEncoder md5PasswordEncoder;
-
-	@Autowired
-	DaoAuthenticationProvider daoAuthenticationProvider;
+    @Autowired
+    DaoAuthenticationProvider daoAuthenticationProvider;
 
 
-	@Autowired
-	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-	    auth.authenticationProvider(daoAuthenticationProvider);
-	    //userDetailsService(userDetailServiceImp).passwordEncoder(md5PasswordEncoder);
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(daoAuthenticationProvider);
+
+    }
 
 
-	}
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/another").hasRole("ADMIN")
+                .antMatchers("/user/**").hasRole("ADMIN")
+                .and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
+    }
 
-	    @Override
-	protected void configure(HttpSecurity http) throws Exception {
+    @Bean
+    public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint() {
 
-		http.csrf().disable()
-					.authorizeRequests()
-				.antMatchers("/another").hasRole("ADMIN")
-				.antMatchers("/user/**").hasRole("ADMIN")
-					.and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
-		}
+        return new CustomBasicAuthenticationEntryPoint();
+    }
 
-		@Bean
-		public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint(){
-
-		return new CustomBasicAuthenticationEntryPoint();
-	}
-
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
-	}
-
-
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+    }
 
 
 }

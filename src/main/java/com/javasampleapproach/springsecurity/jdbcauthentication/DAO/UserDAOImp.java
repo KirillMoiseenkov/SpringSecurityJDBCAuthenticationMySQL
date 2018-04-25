@@ -1,12 +1,10 @@
-package com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impelemetations;
+package com.javasampleapproach.springsecurity.jdbcauthentication.DAO;
 
-import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.interfaces.IUserDAO;
+import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.IUserDAO;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.security.config.annotation.authentication.configurers.provisioning.JdbcUserDetailsManagerConfigurer;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
@@ -29,7 +27,7 @@ public class UserDAOImp implements IUserDAO {
 
         String sql = "select username, password from users where username=?";
 
-        List<User> users = jdbcTemplate.query(sql,new Object[]{userName},new RowMapper<User>() {
+        List<User> users = jdbcTemplate.query(sql, new Object[]{userName}, new RowMapper<User>() {
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                 user.setUserName(userName);
                 user.setPassword(rs.getString("password"));

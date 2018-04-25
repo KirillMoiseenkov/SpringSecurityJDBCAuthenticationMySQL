@@ -1,6 +1,5 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.controller;
 
-import com.javasampleapproach.springsecurity.jdbcauthentication.models.Some;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -15,34 +14,34 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @CrossOrigin
 public class WebController {
-   
-    @RequestMapping(value="/")
-    public String home(){
+
+    @RequestMapping(value = "/")
+    public String home() {
         return "home";
     }
-   
-    @RequestMapping(value="/user")
-    public String user(){
+
+    @RequestMapping(value = "/user")
+    public String user() {
         return "user";
     }
-  
-    @RequestMapping(value="/admin")
-    public String admin(){
+
+    @RequestMapping(value = "/admin")
+    public String admin() {
         return "admin";
     }
-   
-    @RequestMapping(value="/login")
-    public String login(){
+
+    @RequestMapping(value = "/login")
+    public String login() {
         return "login";
     }
-   
-    @RequestMapping(value="/403")
-    public String Error403(){
+
+    @RequestMapping(value = "/403")
+    public String Error403() {
         return "403";
     }
 
     @RequestMapping(value = "/testang", method = RequestMethod.GET)
-    public String nonAuth(){
+    public String nonAuth() {
 
         return "testang";
 
@@ -50,9 +49,9 @@ public class WebController {
 
 
     @RequestMapping(value = "/logout")
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
+        if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
 

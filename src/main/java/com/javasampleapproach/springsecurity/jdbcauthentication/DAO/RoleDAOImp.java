@@ -1,6 +1,6 @@
-package com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impelemetations;
+package com.javasampleapproach.springsecurity.jdbcauthentication.DAO;
 
-import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.interfaces.IRoleDAO;
+import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.IRoleDAO;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,7 +27,7 @@ public class RoleDAOImp implements IRoleDAO {
 
         String sql = "select username, role from user_roles where username=?";
 
-        List<Role> roles = jdbcTemplate.query(sql,new Object[]{userName},new RowMapper<Role>() {
+        List<Role> roles = jdbcTemplate.query(sql, new Object[]{userName}, new RowMapper<Role>() {
             public Role mapRow(ResultSet rs, int rowNum) throws SQLException {
                 role.setUserName(userName);
                 role.setRole(rs.getString("role"));

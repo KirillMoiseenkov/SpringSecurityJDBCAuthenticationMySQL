@@ -1,4 +1,4 @@
-package com.javasampleapproach.springsecurity.jdbcauthentication.DAO.interfaces;
+package com.javasampleapproach.springsecurity.jdbcauthentication.DAO;
 
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.User;
 
