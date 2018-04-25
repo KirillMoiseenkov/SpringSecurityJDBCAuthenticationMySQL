@@ -8,7 +8,7 @@ public class SpringSecurityJdbcAuthenticationMySqlApplication {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringSecurityJdbcAuthenticationMySqlApplication.class, args); //startsTest
+        SpringApplication.run(SpringSecurityJdbcAuthenticationMySqlApplication.class, args); //startsTestsss
 
 
     }
