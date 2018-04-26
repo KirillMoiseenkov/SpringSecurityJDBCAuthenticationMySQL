@@ -1,6 +1,5 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.DAO;
 
-import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.IRoleDAO;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

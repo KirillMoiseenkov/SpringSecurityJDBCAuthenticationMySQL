@@ -1,6 +1,5 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.DAO;
 
-import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.IUserDAO;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

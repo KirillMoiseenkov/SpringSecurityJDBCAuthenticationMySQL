@@ -20,14 +20,14 @@ public class JDBCTest {
 
         String sql = "select username from users where username=:?";
 
-       List<String> s;
-        s = jdbcTemplate.query(sql,new Object[]{username},new RowMapper<String>() {
-             public String mapRow(ResultSet rs, int rowNum) throws SQLException {
-                 return rs.getString("username");
-             }
-         });
+        List<String> s;
+        s = jdbcTemplate.query(sql, new Object[]{username}, new RowMapper<String>() {
+            public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return rs.getString("username");
+            }
+        });
 
-        s.forEach(i-> System.out.println(i));
+        s.forEach(i -> System.out.println(i));
 
     }
 
