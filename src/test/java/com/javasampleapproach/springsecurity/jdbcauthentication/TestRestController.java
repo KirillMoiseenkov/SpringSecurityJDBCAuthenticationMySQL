@@ -1,22 +1,23 @@
-package com.javasampleapproach.springsecurity.jdbcauthentication.controller;
+package com.javasampleapproach.springsecurity.jdbcauthentication;
 
 
-import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.RoleDAOImp;
-import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.UserDAOImp;
+import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impl.RoleDAOImpl;
+import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impl.UserDAOImpl;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Some;
 import com.javasampleapproach.springsecurity.jdbcauthentication.service.authService.UserDetailServiceImp;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.sql.DataSource;
-import java.sql.SQLException;
 
 @RestController
-@CrossOrigin
+@RunWith(SpringRunner.class)
 public class TestRestController {
 
     Some some = new Some();
@@ -26,17 +27,17 @@ public class TestRestController {
     DataSource dataSource;
 
     @Autowired
-    UserDAOImp userDAOImp;
+    UserDAOImpl userDAOImpl;
 
     @Autowired
-    RoleDAOImp roleDAOImp;
+    RoleDAOImpl roleDAOImpl;
 
     @Autowired
     UserDetailServiceImp userDetailServiceImp;
 
-
+    @Test
     @RequestMapping(value = "/jdbcTest", method = RequestMethod.GET)
-    public void getUser(String username) throws SQLException {
+    public void getUser(String username) {
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
@@ -52,6 +53,7 @@ public class TestRestController {
 */
     }
 
+    @Test
     @RequestMapping(value = "/another", method = RequestMethod.GET)
     public Some getString() {
 
@@ -61,6 +63,7 @@ public class TestRestController {
 
     }
 
+    @Test
     @RequestMapping(value = "/nonAuth", method = RequestMethod.GET)
     public Some nonAuth() {
 

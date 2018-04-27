@@ -11,7 +11,7 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import javax.sql.DataSource;
 
 @Configuration
-public class UserDetailServiceConf {
+public class UserDetailServiceConfig {
 
     private final String sqlRole = "select username, role from user_roles where username=?";
 

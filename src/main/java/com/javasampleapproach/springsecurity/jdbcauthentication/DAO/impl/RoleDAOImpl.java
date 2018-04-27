@@ -1,5 +1,6 @@
-package com.javasampleapproach.springsecurity.jdbcauthentication.DAO;
+package com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impl;
 
+import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.IRoleDAO;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class RoleDAOImp implements IRoleDAO {
+public class RoleDAOImpl implements IRoleDAO {
 
     @Autowired
     private DataSource dataSource;

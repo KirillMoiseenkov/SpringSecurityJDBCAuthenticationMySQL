@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 @Component
+
 public class CustomAuthenticationManager implements AuthenticationManager {
 
     @Autowired

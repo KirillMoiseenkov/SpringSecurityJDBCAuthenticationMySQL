@@ -1,5 +1,6 @@
-package com.javasampleapproach.springsecurity.jdbcauthentication.DAO;
+package com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impl;
 
+import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.IUserDAO;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class UserDAOImp implements IUserDAO {
+public class UserDAOImpl implements IUserDAO {
 
     @Autowired
     private DataSource dataSource;
