@@ -1,3 +1,4 @@
+/*
 package com.javasampleapproach.springsecurity.jdbcauthentication.config.auth;
 
 
@@ -17,3 +18,4 @@ public class PasswordEncoderConfig {
 
 
 }
+*/

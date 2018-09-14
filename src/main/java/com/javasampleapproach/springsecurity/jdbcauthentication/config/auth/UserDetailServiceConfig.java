@@ -1,12 +1,12 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.config.auth;
 
 
-import com.javasampleapproach.springsecurity.jdbcauthentication.service.authService.UserDetailServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
 import javax.sql.DataSource;
 
@@ -18,29 +18,26 @@ public class UserDetailServiceConfig {
     @Autowired
     DataSource dataSource;
 
-    @Autowired
-    CustomAuthenticationManager authenticationManager;
 
     @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider(UserDetailServiceImp userDetailServiceImp) {
+    public DaoAuthenticationProvider daoAuthenticationProvider(JdbcUserDetailsManager userDetailServiceImp) {
 
 
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(userDetailServiceImp);
-        daoAuthenticationProvider.setPasswordEncoder(new Md5PasswordEncoder());
+        daoAuthenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
 
         return daoAuthenticationProvider;
     }
 
     @Bean
-    public UserDetailServiceImp userDetailServiceImp() {
+    public JdbcUserDetailsManager userDetailService() {
 
-        UserDetailServiceImp userDetailServiceImp = new UserDetailServiceImp();
-        userDetailServiceImp.setDataSource(dataSource);
-        userDetailServiceImp.setAuthoritiesByUsernameQuery(sqlRole);
-        userDetailServiceImp.setAuthenticationManager(authenticationManager);
+        JdbcUserDetailsManager userDetailService = new JdbcUserDetailsManager();
+        userDetailService.setDataSource(dataSource);
+        //  userDetailService.setAuthoritiesByUsernameQuery(sqlRole);
 
-        return userDetailServiceImp;
+        return userDetailService;
 
     }
 

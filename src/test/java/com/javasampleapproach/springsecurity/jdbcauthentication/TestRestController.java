@@ -1,10 +1,7 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication;
 
 
-import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impl.RoleDAOImpl;
-import com.javasampleapproach.springsecurity.jdbcauthentication.DAO.impl.UserDAOImpl;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Some;
-import com.javasampleapproach.springsecurity.jdbcauthentication.service.authService.UserDetailServiceImp;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +23,6 @@ public class TestRestController {
     @Autowired
     DataSource dataSource;
 
-    @Autowired
-    UserDAOImpl userDAOImpl;
-
-    @Autowired
-    RoleDAOImpl roleDAOImpl;
-
-    @Autowired
-    UserDetailServiceImp userDetailServiceImp;
 
     @Test
     @RequestMapping(value = "/jdbcTest", method = RequestMethod.GET)

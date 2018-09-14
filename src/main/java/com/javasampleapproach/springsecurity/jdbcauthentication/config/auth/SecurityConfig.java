@@ -1,6 +1,5 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.config.auth;
 
-import com.javasampleapproach.springsecurity.jdbcauthentication.service.authService.UserDetailServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
 @Configuration
 @EnableAutoConfiguration
@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static String REALM = "MY_TEST_REALM";
 
     @Autowired
-    UserDetailServiceImp userDetailServiceImp;
+    JdbcUserDetailsManager userDetailServiceImp;
 
     @Autowired
     DaoAuthenticationProvider daoAuthenticationProvider;
@@ -37,8 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/another").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("ADMIN").and().formLogin().loginPage("/login")
+                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/user/**").hasRole("USER").and().formLogin().loginPage("/login")
                 .and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
     }
 
