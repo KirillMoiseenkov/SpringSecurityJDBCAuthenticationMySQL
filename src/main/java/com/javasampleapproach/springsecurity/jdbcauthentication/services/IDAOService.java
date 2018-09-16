@@ -2,7 +2,7 @@ package com.javasampleapproach.springsecurity.jdbcauthentication.services;
 
 import java.util.List;
 
-public interface IService<T> {
+public interface IDAOService<T> {
 
     List<T> getAll();
 

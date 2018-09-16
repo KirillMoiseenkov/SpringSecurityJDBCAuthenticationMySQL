@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ProductService implements IService<Product> {
+public class ProductService implements IDAOService<Product> {
 
     @Autowired
     ProductDaoImp productDaoImp;

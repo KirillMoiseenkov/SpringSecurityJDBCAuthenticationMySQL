@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements IProduct {
 
     @Id
     @Column(name = "id", unique = true, nullable = false)
