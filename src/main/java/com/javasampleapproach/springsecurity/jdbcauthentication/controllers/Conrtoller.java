@@ -62,7 +62,7 @@ public class Conrtoller {
     @RequestMapping(value = "13")
     public String testRole(@ModelAttribute Some some) {
 
-        return additionalPriceService.getAll().toString();
+        return additionalPriceService.getByTypeProduct("products").toString();
 
     }
 

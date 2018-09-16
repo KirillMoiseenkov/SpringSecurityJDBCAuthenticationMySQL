@@ -17,13 +17,15 @@ public class AdditionsPrice {
     @Column(name = "delivery", unique = true, nullable = false)
     private Integer delivery;
 
-    @Column(name = "typeProduct", unique = true, nullable = false)
-    private String typeProduct;
+
+    @Column(name = "product", nullable = false)
+    private String product;
 
 
     public Long getId() {
         return id;
     }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -45,12 +47,12 @@ public class AdditionsPrice {
         this.delivery = delivery;
     }
 
-    public String getTypeProduct() {
-        return typeProduct;
+    public String getProduct() {
+        return product;
     }
 
-    public void setTypeProduct(String typeProduct) {
-        this.typeProduct = typeProduct;
+    public void setProduct(String product) {
+        this.product = product;
     }
 
     @Override
@@ -59,8 +61,9 @@ public class AdditionsPrice {
                 "id=" + id +
                 ", VAT=" + VAT +
                 ", delivery=" + delivery +
-                ", typeProduct='" + typeProduct + '\'' +
+                ", product='" + product + '\'' +
                 '}';
     }
+
 }
 

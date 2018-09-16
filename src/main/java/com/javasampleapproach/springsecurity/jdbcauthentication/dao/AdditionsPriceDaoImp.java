@@ -18,7 +18,7 @@ public class AdditionsPriceDaoImp implements IDAO<AdditionsPrice> {
 
     @Override
     public List<AdditionsPrice> getAll() {
-        return (List<AdditionsPrice>) entityManager.createQuery("SELECT p FROM Product p").getResultList();
+        return (List<AdditionsPrice>) entityManager.createQuery("SELECT p FROM AdditionsPrice p").getResultList();
     }
 
     @Override
@@ -35,4 +35,11 @@ public class AdditionsPriceDaoImp implements IDAO<AdditionsPrice> {
     public AdditionsPrice remove(AdditionsPrice additionsPrice) {
         return entityManager.merge(additionsPrice);
     }
+
+    public AdditionsPrice getByTypeProduct(String product) {
+        return (AdditionsPrice) entityManager.createQuery("SELECT p FROM AdditionsPrice p WHERE p.product = :product")
+                .setParameter("product", product).getSingleResult();
+    }
+
+
 }

@@ -32,4 +32,8 @@ public class AdditionalPriceService implements IDAOService<AdditionsPrice> {
     public AdditionsPrice remove(AdditionsPrice additionsPrice) {
         return additionsPriceDaoImp.remove(additionsPrice);
     }
+
+    public AdditionsPrice getByTypeProduct(String typeProduct) {
+        return additionsPriceDaoImp.getByTypeProduct(typeProduct);
+    }
 }
