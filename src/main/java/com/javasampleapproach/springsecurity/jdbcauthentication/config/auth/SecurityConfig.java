@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin").hasRole("USER")
                 .antMatchers("/user/**").hasRole("USER")
-                .antMatchers("/13").hasAnyRole("USER", "ADMIN")
+                .anyRequest().permitAll()
                 .and().formLogin().loginPage("/login")
                 .and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
     }

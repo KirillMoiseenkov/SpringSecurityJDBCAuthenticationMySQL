@@ -39,8 +39,6 @@ public class UserDetailServiceConfig {
         JdbcUserDetailsManager userDetailService = new JdbcUserDetailsManager();
         userDetailService.setDataSource(dataSource);
         userDetailService.setAuthoritiesByUsernameQuery(sqlRole);
-
-
         return userDetailService;
 
     }
