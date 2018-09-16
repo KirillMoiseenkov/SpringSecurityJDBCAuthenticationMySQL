@@ -12,5 +12,4 @@ public interface IDAO<T> {
 
     T remove(T t);
 
-
 }

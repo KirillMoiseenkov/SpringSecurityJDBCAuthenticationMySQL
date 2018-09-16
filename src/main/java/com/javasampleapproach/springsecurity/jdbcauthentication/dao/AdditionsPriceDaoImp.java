@@ -28,7 +28,7 @@ public class AdditionsPriceDaoImp implements IDAO<AdditionsPrice> {
 
     @Override
     public AdditionsPrice saveOrUpdate(AdditionsPrice additionsPrice) {
-        return null;
+        return entityManager.merge(additionsPrice);
     }
 
     @Override

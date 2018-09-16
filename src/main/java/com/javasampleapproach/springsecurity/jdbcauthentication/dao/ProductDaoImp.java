@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public class ProductDaoImp implements IDAO<Product> {
+public class ProductDaoImp implements IProductDAO<Product> {
 
     private static final Logger log = Logger.getLogger(ProductDaoImp.class);
 
@@ -30,6 +30,7 @@ public class ProductDaoImp implements IDAO<Product> {
         return (Product) entityManager.find(Product.class, id);
     }
 
+
     @Override
     public Product saveOrUpdate(Product product) {
         return null;
@@ -39,4 +40,12 @@ public class ProductDaoImp implements IDAO<Product> {
     public Product remove(Product product) {
         return entityManager.merge(product);
     }
+
+    @Override
+    public Product getByName(String name) {
+        return (Product) entityManager.createQuery("SELECT p FROM Product p WHERE p.name = :name")
+                .setParameter("name", name).getSingleResult();
+
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.controllers;
 
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Some;
+import com.javasampleapproach.springsecurity.jdbcauthentication.services.AdditionalPriceService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.ProductService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class Conrtoller {
 
     @Autowired
     ProductService productService;
+
+    @Autowired
+    AdditionalPriceService additionalPriceService;
 
     @ModelAttribute("some")
     public Some populatePerson() {
@@ -58,7 +62,7 @@ public class Conrtoller {
     @RequestMapping(value = "13")
     public String testRole(@ModelAttribute Some some) {
 
-        return productService.getAll().toString();
+        return additionalPriceService.getAll().toString();
 
     }
 

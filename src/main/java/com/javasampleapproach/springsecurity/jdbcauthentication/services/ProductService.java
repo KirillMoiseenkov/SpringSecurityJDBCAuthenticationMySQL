@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ProductService implements IDAOService<Product> {
+public class ProductService implements IProductDAOService<Product> {
 
     @Autowired
     ProductDaoImp productDaoImp;
@@ -39,5 +39,10 @@ public class ProductService implements IDAOService<Product> {
     @Transactional
     public Product remove(Product product) {
         return null;
+    }
+
+    @Override
+    public Product getByName(String name) {
+        return productDaoImp.getByName(name);
     }
 }
