@@ -1,10 +1,5 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "orders")
 public class Order {
 
     private Long id;

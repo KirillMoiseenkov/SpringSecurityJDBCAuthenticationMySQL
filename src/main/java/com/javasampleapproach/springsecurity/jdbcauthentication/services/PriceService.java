@@ -1,7 +1,9 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PriceService {
 
     @Autowired
@@ -10,6 +12,8 @@ public class PriceService {
     @Autowired
     ProductService productService;
 
+    private Integer price;
+
     public void addVATprice() {
 
     }
@@ -17,5 +21,6 @@ public class PriceService {
     public void addDeliveryPrice() {
 
     }
+
 
 }

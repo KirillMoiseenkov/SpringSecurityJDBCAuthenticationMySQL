@@ -5,16 +5,15 @@ import com.javasampleapproach.springsecurity.jdbcauthentication.services.Additio
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.ProductService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @RestController
-@SessionAttributes("some")
+@SessionAttributes({"some", "doublesome"})
+@CrossOrigin
 public class Conrtoller {
 
     private static final Logger log = Logger.getLogger(Conrtoller.class);
@@ -29,34 +28,42 @@ public class Conrtoller {
     public Some populatePerson() {
 
         Some some = new Some();
-        some.setName("Kirill");
-        some.setId(1);
         return some;
     }
+
+    @ModelAttribute("doublesome")
+    public Some doubleSome() {
+
+        Some doublesome = new Some();
+        doublesome.setId(1);
+        doublesome.setName("Kirill");
+
+        return doublesome;
+    }
+
+
+    @RequestMapping(value = "/testang", method = RequestMethod.POST)
+    public ModelAndView nonAuth(@ModelAttribute Some some, @ModelAttribute Some doublesome) {
+
+        System.out.println(some.toString());
+        System.out.println(doublesome.toString());
+        return new ModelAndView("/testang");
+    }
+
 
 
     @Autowired
     JdbcUserDetailsManager userDetailsManager;
 
-    @RequestMapping(value = "123")
-    public String createUser() {
 
-        /*ArrayList<GrantedAuthority> grantedAuthorityArrayList = new ArrayList<>();
-
-        grantedAuthorityArrayList.add(new SimpleGrantedAuthority("USER"));
-
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-
-        String password = bCryptPasswordEncoder.encode("123");
-
-        User user = new User("123", password, Arrays.asList(new SimpleGrantedAuthority("USER")));
-
-        userDetailsManager.createUser(user);
-*/
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    @PostMapping(value = "123")
+    @ResponseBody
+    public String createUser(@RequestBody List<Some> name) {
 
 
-        return auth.getAuthorities().toString();
+        System.out.println(name.toString());
+
+        return "123";
     }
 
     @RequestMapping(value = "13")
@@ -64,6 +71,11 @@ public class Conrtoller {
 
         return additionalPriceService.getByTypeProduct("products").toString();
 
+    }
+
+    @RequestMapping(value = "post", method = RequestMethod.POST)
+    public void postmethod(@ModelAttribute String name) {
+        System.out.println(name);
     }
 
 }

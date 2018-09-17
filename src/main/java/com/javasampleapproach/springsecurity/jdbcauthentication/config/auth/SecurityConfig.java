@@ -36,7 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
+                .cors().and()
                 .authorizeRequests()
+                .antMatchers("/**").permitAll()
                 .antMatchers("/admin").hasRole("USER")
                 .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().permitAll()
@@ -53,6 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+        web.ignoring().antMatchers("/resources/**");
+
     }
 
 

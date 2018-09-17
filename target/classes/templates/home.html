@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
->
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org
+http://www.thymeleaf.org ">
 <head>
     <title>Security with Spring Boot</title>
+
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+
 </head>
 <body>
 <h1>Hello, This is Home page!</h1>
 <a style="color: blue" th:href="@{/user}">User Page</a>
 <br/>
 <a style="color: blue" th:href="@{/admin}">Admin Page</a>
+
+<script> alller() </script>
+
+
+<form action="#" th:action="@{/testang}" th:object="${some}" method="post">
+
+    <label for="name">name: </label>
+    <input type="text"  class="form-control" id="name" placeholder="Enter name" name="name"/>
+
+    <label for="name">name: </label>
+    <input type="text" class="form-control" id="id" placeholder="Enter id" name="id"/>
+
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+</form>
+
 </body>
 </html>
