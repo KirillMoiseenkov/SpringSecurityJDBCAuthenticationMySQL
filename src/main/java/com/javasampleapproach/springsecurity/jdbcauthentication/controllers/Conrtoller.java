@@ -67,9 +67,9 @@ public class Conrtoller {
     }
 
     @RequestMapping(value = "13")
-    public String testRole(@ModelAttribute Some some) {
+    public ModelAndView testRole() {
 
-        return additionalPriceService.getByTypeProduct("products").toString();
+        return new ModelAndView("shop.html");
 
     }
 
