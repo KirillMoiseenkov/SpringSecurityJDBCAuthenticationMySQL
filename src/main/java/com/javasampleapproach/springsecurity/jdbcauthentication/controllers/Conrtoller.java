@@ -41,11 +41,10 @@ public class Conrtoller {
 
         ArrayList<Some> somes = new ArrayList<>();
         Some some = new Some();
-        some.setName("First");
-        somes.add(some);
         model.addAttribute("somes", somes);
         return somes;
     }
+
 
 
     @RequestMapping(value = "/testang", method = RequestMethod.GET)
@@ -76,9 +75,19 @@ public class Conrtoller {
     }
 
     @RequestMapping(value = "ts")
-    public ModelAndView ts() {
+    public ModelAndView ts(Model model, @ModelAttribute(value = "somes") List<Some> somes) {
 
+        model.addAttribute("somes", somes);
         return new ModelAndView("testang.html");
+    }
+
+    @RequestMapping(value = "delete")
+    public ModelAndView clearCache(@ModelAttribute(value = "somes") List<Some> somes) {
+
+        somes.clear();
+
+        return new ModelAndView("shop.html");
 
     }
+
 }
