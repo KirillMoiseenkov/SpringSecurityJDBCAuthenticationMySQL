@@ -76,6 +76,7 @@ $("form" ).submit(function (event){
 	var t = $( this ).serializeArray();
 
 	for (var i = 0; i < t.length; i = i + 2){
+	if(t[i].value != 0)
 	formJson.push({id:t[i].value, name:t[i+1].value});
 }
 
@@ -96,8 +97,6 @@ event.preventDefault();
 });
 
 })
-
-
 
 </script>
 

@@ -6,13 +6,15 @@ import com.javasampleapproach.springsecurity.jdbcauthentication.services.Product
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@SessionAttributes({"some", "doublesome"})
+@SessionAttributes({"some", "somes"})
 @CrossOrigin
 public class Conrtoller {
 
@@ -31,22 +33,25 @@ public class Conrtoller {
         return some;
     }
 
-    @ModelAttribute("doublesome")
-    public Some doubleSome() {
+    @ModelAttribute("somes")
+    public List<Some> somes(Model model) {
 
-        Some doublesome = new Some();
-        doublesome.setId(1);
-        doublesome.setName("Kirill");
-
-        return doublesome;
+        ArrayList<Some> somes = new ArrayList<>();
+        Some some = new Some();
+        some.setName("First");
+        somes.add(some);
+        model.addAttribute("somes", somes);
+        return somes;
     }
 
 
     @RequestMapping(value = "/testang", method = RequestMethod.POST)
-    public ModelAndView nonAuth(@ModelAttribute Some some, @ModelAttribute Some doublesome) {
+    public ModelAndView nonAuth(@ModelAttribute Some some, @ModelAttribute Some somes) {
+
+        populatePerson().setName("VA");
 
         System.out.println(some.toString());
-        System.out.println(doublesome.toString());
+        System.out.println(somes.toString());
         return new ModelAndView("/testang");
     }
 
@@ -58,10 +63,12 @@ public class Conrtoller {
 
     @PostMapping(value = "123")
     @ResponseBody
-    public String createUser(@RequestBody List<Some> name) {
+    public String createUser(@RequestBody List<Some> newSome, @SessionAttribute(value = "somes") List<Some> somes) {
 
 
-        System.out.println(name.toString());
+        somes.addAll(newSome);
+
+        System.out.println(somes.toString());
 
         return "123";
     }
@@ -73,9 +80,11 @@ public class Conrtoller {
 
     }
 
-    @RequestMapping(value = "post", method = RequestMethod.POST)
-    public void postmethod(@ModelAttribute String name) {
-        System.out.println(name);
-    }
+    @RequestMapping(value = "ts")
+    public ModelAndView ts() {
 
+
+        return new ModelAndView("testang.html");
+
+    }
 }
