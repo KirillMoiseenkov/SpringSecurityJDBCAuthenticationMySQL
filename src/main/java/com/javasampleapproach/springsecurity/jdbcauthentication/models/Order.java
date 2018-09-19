@@ -1,13 +1,23 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "orders")
 public class Order {
 
+    @Id
+    @Column(name = "id", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "product", unique = true, nullable = false)
     private String product;
 
+    @Column(name = "count", unique = true, nullable = false)
     private Integer count;
 
+    @Column(name = "price", unique = true, nullable = false)
     private Integer price;
 
     public Long getId() {

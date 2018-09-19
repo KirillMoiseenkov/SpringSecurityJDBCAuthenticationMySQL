@@ -2,10 +2,10 @@ package com.javasampleapproach.springsecurity.jdbcauthentication.controllers;
 
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Some;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.AdditionalPriceService;
+import com.javasampleapproach.springsecurity.jdbcauthentication.services.OrderService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.ProductService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,6 +26,9 @@ public class Conrtoller {
     @Autowired
     AdditionalPriceService additionalPriceService;
 
+    @Autowired
+    OrderService orderService;
+
     @ModelAttribute("some")
     public Some populatePerson() {
 
@@ -45,20 +48,12 @@ public class Conrtoller {
     }
 
 
-    @RequestMapping(value = "/testang", method = RequestMethod.POST)
-    public ModelAndView nonAuth(@ModelAttribute Some some, @ModelAttribute Some somes) {
-
-        populatePerson().setName("VA");
-
-        System.out.println(some.toString());
-        System.out.println(somes.toString());
-        return new ModelAndView("/testang");
+    @RequestMapping(value = "/testang", method = RequestMethod.GET)
+    public List<Some> getSessionOrder(@ModelAttribute(value = "somes") List<Some> somes) {
+        System.out.println(orderService.getAll().toString());
+        return somes;
     }
 
-
-
-    @Autowired
-    JdbcUserDetailsManager userDetailsManager;
 
 
     @PostMapping(value = "123")
@@ -82,7 +77,6 @@ public class Conrtoller {
 
     @RequestMapping(value = "ts")
     public ModelAndView ts() {
-
 
         return new ModelAndView("testang.html");
 

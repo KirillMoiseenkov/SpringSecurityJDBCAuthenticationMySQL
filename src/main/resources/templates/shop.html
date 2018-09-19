@@ -25,37 +25,22 @@
         <h2 class="text-center"> Добро пожаловать в магазин </h2>
     </div>
 
-    <form action="http://google.com" class="form-group">
+    <form class="form-group">
         <div>
             <div class="text-left">
-                <label> Count </label>
-                <div><input class="form-control" type="text" name="Count"></div>
+                <label> Рыба </label>
+                <div><input class="form-control" type="text" name="count"></div>
+            </div>
+            <div class="text-left">
+                <label> Мясо </label>
+                <div><input class="form-control" type="text" name="count"></div>
             </div>
 
             <div class="text-left">
-                <label> Name </label>
-                <div><input class="form-control" type="text" name="name"></div>
+                <label> Хлеб </label>
+                <div><input class="form-control" type="text" name="count"></div>
             </div>
 
-            <div class="text-left">
-                <label> Count </label>
-                <div><input class="form-control" type="text" name="Count"></div>
-            </div>
-
-            <div class="text-left">
-                <label> Name </label>
-                <div><input class="form-control" type="text" name="name"></div>
-            </div>
-
-            <div class="text-left">
-                <label> Count </label>
-                <div><input class="form-control" type="text" name="Count"></div>
-            </div>
-
-            <div class="text-left">
-                <label> Name </label>
-                <div><input class="form-control" type="text" name="name"></div>
-            </div>
             <div>
                 <input type="submit" class="btn btn-primary" style="margin:5" value="Добавить в корзину">
             </div>
@@ -70,14 +55,11 @@
 $("form" ).submit(function (event){
 
 	var data = JSON.stringify( $( this ).serializeArray());
+    var t = $( this ).serializeArray();
 
-
-
-	var t = $( this ).serializeArray();
-
-	for (var i = 0; i < t.length; i = i + 2){
+	for (var i = 0; i < t.length; i++){
 	if(t[i].value != 0)
-	formJson.push({id:t[i].value, name:t[i+1].value});
+	formJson.push({id:i, name:t[i].value});
 }
 
 console.log(JSON.stringify(formJson));
@@ -85,7 +67,7 @@ console.log(JSON.stringify(formJson));
 event.preventDefault();
 
 	$.ajax({
-    url: 'http://localhost:8080/123',
+    url: '/123',
     type: 'POST',
     data: JSON.stringify(formJson),
     contentType: 'application/json; charset=utf-8',
