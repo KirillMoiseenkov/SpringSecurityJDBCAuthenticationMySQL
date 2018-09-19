@@ -1,8 +1,10 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.controllers;
 
+import com.javasampleapproach.springsecurity.jdbcauthentication.models.Order;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Some;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.AdditionalPriceService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.OrderService;
+import com.javasampleapproach.springsecurity.jdbcauthentication.services.PriceService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.ProductService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class Conrtoller {
     AdditionalPriceService additionalPriceService;
 
     @Autowired
+    PriceService priceService;
+
+    @Autowired
     OrderService orderService;
 
     @ModelAttribute("some")
@@ -37,10 +42,10 @@ public class Conrtoller {
     }
 
     @ModelAttribute("somes")
-    public List<Some> somes(Model model) {
+    public List<Order> somes(Model model) {
 
-        ArrayList<Some> somes = new ArrayList<>();
-        Some some = new Some();
+        ArrayList<Order> somes = new ArrayList<>();
+        Order some = new Order();
         model.addAttribute("somes", somes);
         return somes;
     }
@@ -48,7 +53,7 @@ public class Conrtoller {
 
 
     @RequestMapping(value = "/testang", method = RequestMethod.GET)
-    public List<Some> getSessionOrder(@ModelAttribute(value = "somes") List<Some> somes) {
+    public List<Order> getSessionOrder(@ModelAttribute(value = "somes") List<Order> somes) {
         System.out.println(orderService.getAll().toString());
         return somes;
     }
@@ -57,7 +62,12 @@ public class Conrtoller {
 
     @PostMapping(value = "123")
     @ResponseBody
-    public String createUser(@RequestBody List<Some> newSome, @SessionAttribute(value = "somes") List<Some> somes) {
+    public String createUser(@RequestBody List<Order> newSome, @SessionAttribute(value = "somes") List<Order> somes) {
+
+        newSome.forEach(order -> {
+            order.setPrice(productService.getByName(order.getProduct()).getPrice() * order.getCount());
+        });
+
 
 
         somes.addAll(newSome);
@@ -75,17 +85,25 @@ public class Conrtoller {
     }
 
     @RequestMapping(value = "ts")
-    public ModelAndView ts(Model model, @ModelAttribute(value = "somes") List<Some> somes) {
+    public ModelAndView ts(Model model, @ModelAttribute(value = "somes") List<Order> somes) {
 
         model.addAttribute("somes", somes);
         return new ModelAndView("testang.html");
     }
 
     @RequestMapping(value = "delete")
-    public ModelAndView clearCache(@ModelAttribute(value = "somes") List<Some> somes) {
+    public ModelAndView clearCache(@ModelAttribute(value = "somes") List<Order> somes) {
 
         somes.clear();
 
+        return new ModelAndView("shop.html");
+
+    }
+
+    @RequestMapping(value = "price")
+    public ModelAndView nowPrice() {
+
+        
         return new ModelAndView("shop.html");
 
     }

@@ -29,16 +29,16 @@
         <div>
             <div class="text-left">
                 <label> Рыба </label>
-                <div><input class="form-control" type="text" name="count"></div>
+                <div><input class="form-control" type="text" name="Рыба"></div>
             </div>
             <div class="text-left">
                 <label> Мясо </label>
-                <div><input class="form-control" type="text" name="count"></div>
+                <div><input class="form-control" type="text" name="Мясо"></div>
             </div>
 
             <div class="text-left">
                 <label> Хлеб </label>
-                <div><input class="form-control" type="text" name="count"></div>
+                <div><input class="form-control" type="text" name="Хлеб"></div>
             </div>
 
             <div>
@@ -60,7 +60,7 @@ $("form" ).submit(function (event){
 
 	for (var i = 0; i < t.length; i++){
 	if(t[i].value != 0)
-	formJson.push({id:i, name:t[i].value});
+	formJson.push({id:i, count:t[i].value, product:t[i].name});
 }
 
 console.log(JSON.stringify(formJson));

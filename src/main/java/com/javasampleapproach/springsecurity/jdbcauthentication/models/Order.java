@@ -18,7 +18,7 @@ public class Order {
     private Integer count;
 
     @Column(name = "price", unique = true, nullable = false)
-    private Integer price;
+    private Double price;
 
     public Long getId() {
         return id;
@@ -44,11 +44,11 @@ public class Order {
         this.count = count;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

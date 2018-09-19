@@ -17,15 +17,18 @@
 </head>
 <body>
 
-<h1>This is bucket page!</h1>
 
 <div class="container">
+
+    <h2 class="text-center"> Добро пожаловать в корзину</h2>
 
     <table class="table">
         <thead>
         <tr>
             <th> Id</th>
-            <th> Name</th>
+            <th> Количество</th>
+            <th> Продукты</th>
+            <th> Цена</th>
         </tr>
         </thead>
         <tbody>
@@ -34,7 +37,9 @@
         </tr>
         <tr th:each="some : ${somes}">
             <td><span th:text="${some.id}"> id </span></td>
-            <td><span th:text="${some.name}"> name</span></td>
+            <td><span th:text="${some.count}"> name</span></td>
+            <td><span th:text="${some.product}"> product</span></td>
+            <td><span th:text="${some.price}"> price</span></td>
         </tr>
         </tbody>
     </table>
