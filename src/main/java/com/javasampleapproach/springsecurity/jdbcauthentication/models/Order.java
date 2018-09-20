@@ -13,9 +13,6 @@ public class Order {
 
 //    @Column(name = "product", unique = true, nullable = false)
 
-    @Transient
-    private String product;
-
     @OneToOne
     @JoinColumn(name = "product_id")
     private Product product_id;
@@ -43,14 +40,6 @@ public class Order {
         this.id = id;
     }
 
-    public String getProduct() {
-        return product;
-    }
-
-    public void setProduct(String product) {
-        this.product = product;
-    }
-
     public Integer getCount() {
         return count;
     }
@@ -71,7 +60,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", product='" + product + '\'' +
+                ", product_id=" + product_id.toString() +
                 ", count=" + count +
                 ", price=" + price +
                 '}';

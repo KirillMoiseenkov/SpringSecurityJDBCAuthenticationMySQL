@@ -38,7 +38,7 @@
         <tr th:each="order : ${orders}">
             <td><span th:text="${order.id}"> id </span></td>
             <td><span th:text="${order.count}"> name</span></td>
-            <td><span th:text="${order.product}"> product</span></td>
+            <td><span th:text="${order.product_id.name}"> product</span></td>
             <td><span th:text="${order.price}"> price</span></td>
         </tr>
         </tbody>

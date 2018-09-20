@@ -75,7 +75,7 @@ public class ShopConrtoller {
 
     @RequestMapping(value = "/bucket", method = RequestMethod.GET)
     public List<Order> getSessionOrder(@ModelAttribute(value = "orders") List<Order> orders) {
-        System.out.println(orderService.getAll().toString());
+        log.debug(orderService.getAll().toString());
         return orders;
     }
 
@@ -84,28 +84,12 @@ public class ShopConrtoller {
     @ResponseBody
     public String createSessionOrder(@RequestBody List<Order> newSome, @SessionAttribute(value = "orders") List<Order> orders) {
 
-        System.out.println(newSome.toString());
 
-        if (newSome.get(0).getProduct_id() == null) {
-            System.out.println("null");
-        } else
-            System.out.println(newSome.get(0).getProduct_id().toString());
+        newSome.forEach(order -> {
 
-
-/*
-        Product product = new Product();
-        product = productService.getByName("Пиво");
-        Order order = new Order();
-        order.setCount(3);
-        order.setPrice(product.getPrice() * order.getCount());
-        order.setProduct_id(product);
-        orderService.saveOrUpdate(order);
-*/
-
-        /*newSome.forEach(order -> {
-
-            order.setPrice(productService.getByName(order.getProduct()).getPrice() * order.getCount());
-
+            Product product = productService.getById(order.getProduct_id().getId()); //Это просто ужсасно, нужно получать их с фронта, но еще не успел
+            order.setProduct_id(product);
+            order.setPrice(product.getPrice() * order.getCount());
             order.setPrice(priceService.addDeliveryPrice(order.getPrice()));
             order.setPrice(priceService.addVATprice(order.getPrice()));
         });
@@ -113,7 +97,7 @@ public class ShopConrtoller {
 
         orders.addAll(newSome);
 
-        System.out.println(orders.toString());*/
+        log.debug(orders.toString());
 
         return "addOrderToSession";
     }
@@ -124,7 +108,7 @@ public class ShopConrtoller {
 
         orders.forEach(order -> {
             order.setId(0l);
-            System.out.println(order.toString());
+            log.debug(order.toString());
             orderService.saveOrUpdate(order);
         });
 
