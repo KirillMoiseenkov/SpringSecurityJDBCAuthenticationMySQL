@@ -1,6 +1,7 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.controllers;
 
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Order;
+import com.javasampleapproach.springsecurity.jdbcauthentication.models.Product;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.AdditionalPriceService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.OrderService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.PriceService;
@@ -85,7 +86,12 @@ public class Conrtoller {
     }
 
     @RequestMapping(value = "shop")
-    public ModelAndView testRole() {
+    public ModelAndView testRole(Model model) {
+
+        List<Product> products = productService.getAll();
+
+        model.addAttribute("products", products);
+
 
         return new ModelAndView("shop.html");
 
@@ -114,5 +120,16 @@ public class Conrtoller {
         return new ModelAndView("shop.html");
 
     }
+
+    /*@GetMapping(value = "getProduct")
+    public List<Product> getProduct(Model model) {
+
+        List<Product> products = productService.getAll();
+
+        model.addAttribute("products",products);
+
+        return products;
+
+    }*/
 
 }

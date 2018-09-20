@@ -25,28 +25,24 @@
         <h2 class="text-center"> Добро пожаловать в магазин </h2>
     </div>
 
-    <form class="form-group">
-        <div>
-            <div class="text-left">
-                <label> Рыба </label>
-                <div><input class="form-control" type="text" name="Рыба"></div>
-            </div>
-            <div class="text-left">
-                <label> Мясо </label>
-                <div><input class="form-control" type="text" name="Мясо"></div>
-            </div>
 
-            <div class="text-left">
-                <label> Хлеб </label>
-                <div><input class="form-control" type="text" name="Хлеб"></div>
-            </div>
+    <form class="form-group">
+        <div th:each="product : ${products}">
 
             <div>
-                <input type="submit" class="btn btn-primary" style="margin:5" value="Добавить в корзину">
-                <p class="text-right"><a href="/ts" class="btn btn-primary">Перейти в корзину</a></p>
+                <div class="text-left">
+                    <label th:text="${product.name}"> </label>
+                    <div><input class="form-control" type="text" th:attr="name=${product.name}"></div>
+                </div>
             </div>
+
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" style="margin:5" value="Добавить в корзину">
+            <p class="text-right"><a href="/ts" class="btn btn-primary">Перейти в корзину</a></p>
         </div>
     </form>
+
 </div>
 
 
