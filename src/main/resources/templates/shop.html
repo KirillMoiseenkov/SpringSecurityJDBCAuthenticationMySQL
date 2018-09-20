@@ -28,10 +28,10 @@
 
     <form class="form-group">
         <div th:each="product : ${products}">
-
             <div>
                 <div class="text-left">
-                    <label th:text="${product.name}"> </label>
+                    <label th:text="'Имя: ' + ${product.name} + '.        Цена за штуку (без доставки и НДС): ' + ${product.price}">
+                        Цена</label>
                     <div><input class="form-control" type="text" th:attr="name=${product.name}"></div>
                 </div>
             </div>
@@ -39,9 +39,15 @@
         </div>
         <div>
             <input type="submit" class="btn btn-primary" style="margin:5" value="Добавить в корзину">
-            <p class="text-right"><a href="/ts" class="btn btn-primary">Перейти в корзину</a></p>
+            <p class="text-right"><a href="/sendToBucket" class="btn btn-primary">Перейти в корзину</a></p>
         </div>
     </form>
+
+    <div class="text-left">
+        <span th:text="'НДС: ' + ${VAT} + '%;'"></span>
+        <br>
+        <span th:text="'Процентная часть доставки к стоимости всего заказа: ' + ${delivery} + ';'"></span>
+    </div>
 
 </div>
 

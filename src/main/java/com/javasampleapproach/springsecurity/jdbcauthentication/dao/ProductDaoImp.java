@@ -22,6 +22,7 @@ public class ProductDaoImp implements IProductDAO<Product> {
 
     @Override
     public List<Product> getAll() {
+
         return (List<Product>) entityManager.createQuery("SELECT p FROM Product p").getResultList();
     }
 
@@ -33,12 +34,18 @@ public class ProductDaoImp implements IProductDAO<Product> {
 
     @Override
     public Product saveOrUpdate(Product product) {
-        return null;
+
+        log.debug("add/merge new product: " + product.toString());
+        return entityManager.merge(product); //предполагается, что его не существует,поэтому megre
     }
 
     @Override
     public Product remove(Product product) {
-        return entityManager.merge(product);
+
+        log.debug("remove product: " + product.toString());
+        entityManager.remove(product);
+        return product;
+
     }
 
     @Override

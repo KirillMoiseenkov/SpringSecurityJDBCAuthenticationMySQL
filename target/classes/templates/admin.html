@@ -17,18 +17,36 @@
 <div class="container" style="padding:25">
 
     <p class="text-right"><a href="/logout" class="btn btn-primary">Выйти</a></p>
-
+    <br>
+    <h2>Изменить параметры обработки</h2>
     <form th:action="@{/setPriceAddition}" method="post">
         <div class="form-group">
             <label for="VAT"> НДС </label>
-            <input type="text" class="form-control" id="VAT" placeholder="Enter UserName" name="VAT"/>
+            <input type="text" class="form-control" id="VAT" placeholder="Введите НДС" name="VAT"/>
         </div>
         <div class="form-group">
             <label for="delivery">Доставка </label>
-            <input type="text" class="form-control" id="delivery" placeholder="Enter Password" name="delivery"/>
+            <input type="text" class="form-control" id="delivery" placeholder="Введите цену доставки" name="delivery"/>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Отправить</button>
+        <button type="submit" class="btn btn-primary btn-block">Изменить</button>
 </form>
+
+    <br>
+    <div>
+        <h2>Добавить новый продукт</h2>
+    <form th:action="@{/addNewProduct}" method="post">
+        <div class="form-group">
+            <label for="name"> Имя </label>
+            <input type="text" class="form-control" id="name" placeholder="Введите название" name="name"/>
+        </div>
+        <div class="form-group">
+            <label for="price"> Цена </label>
+            <input type="text" class="form-control" id="price" placeholder="Введите цену" name="price"/>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Добавить</button>
+    </form>
+    </div>
+
 </div>
 
 </body>

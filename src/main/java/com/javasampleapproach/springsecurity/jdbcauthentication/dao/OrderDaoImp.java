@@ -1,6 +1,7 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.dao;
 
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Order;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -12,6 +13,8 @@ public class OrderDaoImp implements IDAO<Order> {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    private static final Logger log = Logger.getLogger(OrderDaoImp.class);
 
     public OrderDaoImp() {
 
@@ -31,11 +34,14 @@ public class OrderDaoImp implements IDAO<Order> {
 
     @Override
     public Order saveOrUpdate(Order order) {
-        return entityManager.merge(order);
+        log.debug("add/merge new order: " + order.toString());
+        return entityManager.merge(order); //предполагается, что его не существует,поэтому megre
     }
 
     @Override
     public Order remove(Order order) {
-        return entityManager.merge(order);
+        log.debug("remove order: " + order.toString());
+        entityManager.merge(order);
+        return order;
     }
 }

@@ -1,3 +1,4 @@
+/*
 package com.javasampleapproach.springsecurity.jdbcauthentication.services;
 
 import com.javasampleapproach.springsecurity.jdbcauthentication.dao.AdditionsPriceDaoImp;
@@ -37,3 +38,4 @@ public class AdditionalPriceService implements IDAOService<AdditionsPrice> {
         return additionsPriceDaoImp.getByTypeProduct(typeProduct);
     }
 }
+*/

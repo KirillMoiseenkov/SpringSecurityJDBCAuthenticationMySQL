@@ -2,7 +2,6 @@ package com.javasampleapproach.springsecurity.jdbcauthentication.controllers;
 
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Order;
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Product;
-import com.javasampleapproach.springsecurity.jdbcauthentication.services.AdditionalPriceService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.OrderService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.PriceService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.ProductService;
@@ -17,16 +16,13 @@ import java.util.List;
 
 @RestController
 @SessionAttributes({"orders"})
-@CrossOrigin
-public class Conrtoller {
+public class AnonymousController {
 
-    private static final Logger log = Logger.getLogger(Conrtoller.class);
+    private static final Logger log = Logger.getLogger(AnonymousController.class);
 
     @Autowired
     ProductService productService;
 
-    @Autowired
-    AdditionalPriceService additionalPriceService;
 
     @Autowired
     PriceService priceService;
@@ -43,9 +39,34 @@ public class Conrtoller {
         return orders;
     }
 
+    @ModelAttribute("VAT")
+    public Double VAT(Model model) {
+
+        model.addAttribute("VAT", priceService.getVAT());
+        return priceService.getVAT();
+    }
+
+    @ModelAttribute("delivery")
+    public Double delivery(Model model) {
 
 
-    @RequestMapping(value = "/testang", method = RequestMethod.GET)
+        model.addAttribute("delivery", priceService.getDeliveryPrice());
+        return priceService.getDeliveryPrice();
+    }
+
+    @ModelAttribute("products")
+    public List<Product> products(Model model) {
+
+
+        List<Product> products = productService.getAll();
+
+        model.addAttribute("products", products);
+
+        return products;
+    }
+
+
+    @RequestMapping(value = "/bucket", method = RequestMethod.GET)
     public List<Order> getSessionOrder(@ModelAttribute(value = "orders") List<Order> orders) {
         System.out.println(orderService.getAll().toString());
         return orders;
@@ -88,20 +109,15 @@ public class Conrtoller {
     @RequestMapping(value = "shop")
     public ModelAndView testRole(Model model) {
 
-        List<Product> products = productService.getAll();
-
-        model.addAttribute("products", products);
-
-
         return new ModelAndView("shop.html");
 
     }
 
-    @RequestMapping(value = "ts")
-    public ModelAndView ts(Model model, @ModelAttribute(value = "orders") List<Order> orders) {
+    @RequestMapping(value = "sendToBucket")
+    public ModelAndView sendToBucket(Model model, @ModelAttribute(value = "orders") List<Order> orders) {
 
         model.addAttribute("orders", orders);
-        return new ModelAndView("testang.html");
+        return new ModelAndView("bucket.html");
     }
 
     @RequestMapping(value = "delete")
@@ -113,13 +129,7 @@ public class Conrtoller {
 
     }
 
-    @RequestMapping(value = "price")
-    public ModelAndView nowPrice() {
 
-
-        return new ModelAndView("shop.html");
-
-    }
 
     /*@GetMapping(value = "getProduct")
     public List<Product> getProduct(Model model) {
