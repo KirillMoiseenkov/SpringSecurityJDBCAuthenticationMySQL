@@ -11,14 +11,29 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "product", unique = true, nullable = false)
+//    @Column(name = "product", unique = true, nullable = false)
+
+    @Transient
     private String product;
+
+    @OneToOne
+    @JoinColumn(name = "product_id")
+    private Product product_id;
 
     @Column(name = "count", unique = true, nullable = false)
     private Integer count;
 
     @Column(name = "price", unique = true, nullable = false)
     private Double price;
+
+
+    public Product getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(Product product_id) {
+        this.product_id = product_id;
+    }
 
     public Long getId() {
         return id;
@@ -56,7 +71,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", product=" + product +
+                ", product='" + product + '\'' +
                 ", count=" + count +
                 ", price=" + price +
                 '}';

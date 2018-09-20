@@ -30,7 +30,7 @@
                 <div class="text-left">
                     <label th:text="'Имя: ' + ${product.name} + '.        Цена за штуку (без доставки и НДС): ' + ${product.price}">
                         Цена</label>
-                    <div><input class="form-control" type="text" th:attr="name=${product.name}"></div>
+                    <div><input class="form-control" type="text" th:attr="name=${product.id}"></div>
                 </div>
             </div>
 
@@ -59,8 +59,12 @@ $("form" ).submit(function (event){
     var t = $( this ).serializeArray();
 
 	for (var i = 0; i < t.length; i++){
-	if(t[i].value != 0)
-	formJson.push({id:i, count:t[i].value, product:t[i].name});
+	if(t[i].value != 0){
+
+	var product_id = {id:t[i].name};
+
+	formJson.push({id:i, count:t[i].value, product:t[i].name, price:100, product_id:product_id });
+	}
 }
 
 console.log(JSON.stringify(formJson));

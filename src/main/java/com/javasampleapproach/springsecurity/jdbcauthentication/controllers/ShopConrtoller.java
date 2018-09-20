@@ -84,7 +84,26 @@ public class ShopConrtoller {
     @ResponseBody
     public String createSessionOrder(@RequestBody List<Order> newSome, @SessionAttribute(value = "orders") List<Order> orders) {
 
-        newSome.forEach(order -> {
+        System.out.println(newSome.toString());
+
+        if (newSome.get(0).getProduct_id() == null) {
+            System.out.println("null");
+        } else
+            System.out.println(newSome.get(0).getProduct_id().toString());
+
+
+/*
+        Product product = new Product();
+        product = productService.getByName("Пиво");
+        Order order = new Order();
+        order.setCount(3);
+        order.setPrice(product.getPrice() * order.getCount());
+        order.setProduct_id(product);
+        orderService.saveOrUpdate(order);
+*/
+
+        /*newSome.forEach(order -> {
+
             order.setPrice(productService.getByName(order.getProduct()).getPrice() * order.getCount());
 
             order.setPrice(priceService.addDeliveryPrice(order.getPrice()));
@@ -94,7 +113,7 @@ public class ShopConrtoller {
 
         orders.addAll(newSome);
 
-        System.out.println(orders.toString());
+        System.out.println(orders.toString());*/
 
         return "addOrderToSession";
     }
