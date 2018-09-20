@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <title> LAR FRONT </title>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<div class="container" style="padding:25">
+
+    <div class="text-right">
+        <a th:href="@{/admin}">Admin Page</a>
+
+        <h2 class="text-center"> Добро пожаловать в магазин </h2>
+    </div>
+
+
+    <form class="form-group">
+        <div th:each="product : ${products}">
+            <div>
+                <div class="text-left">
+                    <label th:text="'Имя: ' + ${product.name} + '.        Цена за штуку (без доставки и НДС): ' + ${product.price}">
+                        Цена</label>
+                    <div><input class="form-control" type="text" th:attr="name=${product.name}"></div>
+                </div>
+            </div>
+
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" style="margin:5" value="Добавить в корзину">
+            <p class="text-right"><a href="/sendToBucket" class="btn btn-primary">Перейти в корзину</a></p>
+        </div>
+    </form>
+
+    <div class="text-left">
+        <span th:text="'НДС: ' + ${VAT} + '%;'"></span>
+        <br>
+        <span th:text="'Процентная часть доставки к стоимости всего заказа: ' + ${delivery} + ';'"></span>
+    </div>
+
+</div>
+
+
+</body>
+<script>
+    var formJson = [];
+$("form" ).submit(function (event){
+
+	var data = JSON.stringify( $( this ).serializeArray());
+    var t = $( this ).serializeArray();
+
+	for (var i = 0; i < t.length; i++){
+	if(t[i].value != 0)
+	formJson.push({id:i, count:t[i].value, product:t[i].name});
+}
+
+console.log(JSON.stringify(formJson));
+
+event.preventDefault();
+
+	$.ajax({
+    url: '/addOrderToSession',
+    type: 'POST',
+    data: JSON.stringify(formJson),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    success: function(msg) {
+
+    }
+});
+
+})
+
+</script>
+
+</html>

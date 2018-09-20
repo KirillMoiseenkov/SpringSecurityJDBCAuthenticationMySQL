@@ -4,12 +4,50 @@
 >
 <head>
     <title>Welcome Security with Spring Boot!</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-<h1>Hello, the page is for Admin!</h1>
-<a style="color: blue" th:href="@{/}">Home</a>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
+
+<div class="container" style="padding:25">
+
+    <p class="text-right"><a href="/logout" class="btn btn-primary">Выйти</a></p>
+    <br>
+    <h2>Изменить параметры обработки</h2>
+    <form th:action="@{/setPriceAddition}" method="post">
+        <div class="form-group">
+            <label for="VAT"> НДС </label>
+            <input type="text" class="form-control" id="VAT" placeholder="Введите НДС" name="VAT"/>
+        </div>
+        <div class="form-group">
+            <label for="delivery">Доставка </label>
+            <input type="text" class="form-control" id="delivery" placeholder="Введите цену доставки" name="delivery"/>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Изменить</button>
+    </form>
+
+    <br>
+    <div>
+        <h2>Добавить новый продукт</h2>
+        <form th:action="@{/addNewProduct}" method="post">
+            <div class="form-group">
+                <label for="name"> Имя </label>
+                <input type="text" class="form-control" id="name" placeholder="Введите название" name="name"/>
+            </div>
+            <div class="form-group">
+                <label for="price"> Цена </label>
+                <input type="text" class="form-control" id="price" placeholder="Введите цену" name="price"/>
+        </div>
+            <button type="submit" class="btn btn-primary btn-block">Добавить</button>
+        </form>
+    </div>
+
+</div>
+
 </body>
 </html>

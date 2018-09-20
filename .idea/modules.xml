@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SpringSecurityJDBCAuthenticationMySQL.iml" filepath="$PROJECT_DIR$/SpringSecurityJDBCAuthenticationMySQL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LAR.iml" filepath="$PROJECT_DIR$/LAR.iml" />
     </modules>
   </component>
 </project>

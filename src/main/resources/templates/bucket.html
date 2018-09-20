@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <title>Security with Spring Boot</title>
+
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <h2 class="text-center"> Добро пожаловать в корзину</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th> Id</th>
+            <th> Количество</th>
+            <th> Продукты</th>
+            <th> Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${orders.empty}">
+            <td colspan="2"> No product</td>
+        </tr>
+        <tr th:each="order : ${orders}">
+            <td><span th:text="${order.id}"> id </span></td>
+            <td><span th:text="${order.count}"> name</span></td>
+            <td><span th:text="${order.product}"> product</span></td>
+            <td><span th:text="${order.price}"> price</span></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <p class="text-right"><a href="/shop" class="btn btn-primary">Вернуться к выбору товаров</a></p>
+        <p class="text-right"><a href="/order" class="btn btn-primary">Подтвердить заказ</a></p>
+
+    </div>
+
+
+    <div>
+        <p class="text-right"><a href="/delete" class="btn btn-primary">Отменить заказ</a></p>
+    </div>
+
+</div>
+
+</body>
+</html>
