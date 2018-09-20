@@ -13,35 +13,35 @@ public class PriceService {
     @Autowired
     ProductService productService;
 
-    private Integer VAT;
+    private Double VAT = 1.0;
 
-    private Integer deliveryPrice;
+    private Double deliveryPrice = 1.0;
 
-    public Integer getVAT() {
+    public Double getVAT() {
         return VAT;
     }
 
-    public void setVAT(Integer VAT) {
+    public void setVAT(Double VAT) {
         this.VAT = VAT;
     }
 
-    public Integer getDeliveryPrice() {
+    public Double getDeliveryPrice() {
         return deliveryPrice;
     }
 
-    public void setDeliveryPrice(Integer deliveryPrice) {
+    public void setDeliveryPrice(Double deliveryPrice) {
         this.deliveryPrice = deliveryPrice;
     }
 
-    public Integer addVATprice(Integer startPrice) {
+    public Double addVATprice(Double startPrice) {
 
         return startPrice + (startPrice / 100) * VAT;
 
     }
 
-    public Integer addDeliveryPrice(Integer startPrice) {
+    public Double addDeliveryPrice(Double startPrice) {
 
-        return startPrice + startPrice / deliveryPrice;
+        return startPrice + (startPrice / 100) * deliveryPrice;
 
     }
 

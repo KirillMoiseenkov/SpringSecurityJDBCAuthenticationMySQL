@@ -62,10 +62,13 @@ public class Conrtoller {
 
     @PostMapping(value = "123")
     @ResponseBody
-    public String createUser(@RequestBody List<Order> newSome, @SessionAttribute(value = "somes") List<Order> somes) {
+    public String createSessionOrder(@RequestBody List<Order> newSome, @SessionAttribute(value = "somes") List<Order> somes) {
 
         newSome.forEach(order -> {
             order.setPrice(productService.getByName(order.getProduct()).getPrice() * order.getCount());
+
+            order.setPrice(priceService.addDeliveryPrice(order.getPrice()));
+            order.setPrice(priceService.addVATprice(order.getPrice()));
         });
 
 
@@ -77,7 +80,21 @@ public class Conrtoller {
         return "123";
     }
 
-    @RequestMapping(value = "13")
+    @RequestMapping(value = "order")
+    @ResponseBody
+    public ModelAndView order(@SessionAttribute(value = "somes") List<Order> somes) {
+
+        somes.forEach(order -> {
+            order.setId(0l);
+            System.out.println(order.toString());
+            orderService.saveOrUpdate(order);
+        });
+
+        return new ModelAndView("shop.html");
+
+    }
+
+    @RequestMapping(value = "shop")
     public ModelAndView testRole() {
 
         return new ModelAndView("shop.html");
@@ -103,7 +120,7 @@ public class Conrtoller {
     @RequestMapping(value = "price")
     public ModelAndView nowPrice() {
 
-        
+
         return new ModelAndView("shop.html");
 
     }

@@ -16,7 +16,7 @@ public class WebController {
 
     @RequestMapping(value = "/")
     public String home() {
-        return "home";
+        return "login";
     }
 
     @RequestMapping(value = "/user")

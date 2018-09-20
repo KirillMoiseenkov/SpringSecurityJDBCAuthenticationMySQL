@@ -31,7 +31,7 @@ public class OrderDaoImp implements IDAO<Order> {
 
     @Override
     public Order saveOrUpdate(Order order) {
-        return null;
+        return entityManager.merge(order);
     }
 
     @Override

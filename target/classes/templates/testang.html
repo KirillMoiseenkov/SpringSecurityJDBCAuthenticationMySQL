@@ -25,10 +25,10 @@
     <table class="table">
         <thead>
         <tr>
-            <th> Id </th>
-            <th> Количество </th>
-            <th> Продукты </th>
-            <th> Цена </th>
+            <th> Id</th>
+            <th> Количество</th>
+            <th> Продукты</th>
+            <th> Цена</th>
         </tr>
         </thead>
         <tbody>
@@ -40,14 +40,16 @@
             <td><span th:text="${some.count}"> name</span></td>
             <td><span th:text="${some.product}"> product</span></td>
             <td><span th:text="${some.price}"> price</span></td>
-
         </tr>
         </tbody>
     </table>
 
     <div>
-        <p class="text-right"><a href="/13" class="btn btn-primary">Вернуться к выбору товаров</a></p>
+        <p class="text-right"><a href="/shop" class="btn btn-primary">Вернуться к выбору товаров</a></p>
+        <p class="text-right"><a href="/order" class="btn btn-primary">Подтвердить заказ</a></p>
+
     </div>
+
 
     <div>
         <p class="text-right"><a href="/delete" class="btn btn-primary">Отменить заказ</a></p>
