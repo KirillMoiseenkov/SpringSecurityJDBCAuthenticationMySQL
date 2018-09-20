@@ -19,15 +19,15 @@
     <p class="text-right"><a href="/logout" class="btn btn-primary">Выйти</a></p>
 
     <form th:action="@{/setPriceAddition}" method="post">
-    <div class="form-group">
-        <label for="VAT"> НДС </label>
-        <input type="text" class="form-control" id="VAT" placeholder="Enter UserName" name="VAT"/>
-    </div>
-    <div class="form-group">
-        <label for="delivery">Доставка  </label>
-        <input type="text" class="form-control" id="delivery" placeholder="Enter Password" name="delivery"/>
-    </div>
-    <button type="submit" class="btn btn-primary btn-block">Отправить</button>
+        <div class="form-group">
+            <label for="VAT"> НДС </label>
+            <input type="text" class="form-control" id="VAT" placeholder="Enter UserName" name="VAT"/>
+        </div>
+        <div class="form-group">
+            <label for="delivery">Доставка </label>
+            <input type="text" class="form-control" id="delivery" placeholder="Enter Password" name="delivery"/>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Отправить</button>
 </form>
 </div>
 

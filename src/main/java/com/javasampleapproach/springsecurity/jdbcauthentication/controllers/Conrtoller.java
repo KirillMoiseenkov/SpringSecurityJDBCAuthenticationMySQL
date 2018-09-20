@@ -1,7 +1,6 @@
 package com.javasampleapproach.springsecurity.jdbcauthentication.controllers;
 
 import com.javasampleapproach.springsecurity.jdbcauthentication.models.Order;
-import com.javasampleapproach.springsecurity.jdbcauthentication.models.Some;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.AdditionalPriceService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.OrderService;
 import com.javasampleapproach.springsecurity.jdbcauthentication.services.PriceService;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@SessionAttributes({"some", "somes"})
+@SessionAttributes({"orders"})
 @CrossOrigin
 public class Conrtoller {
 
@@ -34,35 +33,27 @@ public class Conrtoller {
     @Autowired
     OrderService orderService;
 
-    @ModelAttribute("some")
-    public Some populatePerson() {
 
-        Some some = new Some();
-        return some;
-    }
+    @ModelAttribute("orders")
+    public List<Order> orders(Model model) {
 
-    @ModelAttribute("somes")
-    public List<Order> somes(Model model) {
-
-        ArrayList<Order> somes = new ArrayList<>();
-        Order some = new Order();
-        model.addAttribute("somes", somes);
-        return somes;
+        ArrayList<Order> orders = new ArrayList<>();
+        model.addAttribute("orders", orders);
+        return orders;
     }
 
 
 
     @RequestMapping(value = "/testang", method = RequestMethod.GET)
-    public List<Order> getSessionOrder(@ModelAttribute(value = "somes") List<Order> somes) {
+    public List<Order> getSessionOrder(@ModelAttribute(value = "orders") List<Order> orders) {
         System.out.println(orderService.getAll().toString());
-        return somes;
+        return orders;
     }
 
 
-
-    @PostMapping(value = "123")
+    @PostMapping(value = "addOrderToSession")
     @ResponseBody
-    public String createSessionOrder(@RequestBody List<Order> newSome, @SessionAttribute(value = "somes") List<Order> somes) {
+    public String createSessionOrder(@RequestBody List<Order> newSome, @SessionAttribute(value = "orders") List<Order> orders) {
 
         newSome.forEach(order -> {
             order.setPrice(productService.getByName(order.getProduct()).getPrice() * order.getCount());
@@ -72,19 +63,18 @@ public class Conrtoller {
         });
 
 
+        orders.addAll(newSome);
 
-        somes.addAll(newSome);
+        System.out.println(orders.toString());
 
-        System.out.println(somes.toString());
-
-        return "123";
+        return "addOrderToSession";
     }
 
     @RequestMapping(value = "order")
     @ResponseBody
-    public ModelAndView order(@SessionAttribute(value = "somes") List<Order> somes) {
+    public ModelAndView order(@SessionAttribute(value = "orders") List<Order> orders) {
 
-        somes.forEach(order -> {
+        orders.forEach(order -> {
             order.setId(0l);
             System.out.println(order.toString());
             orderService.saveOrUpdate(order);
@@ -102,16 +92,16 @@ public class Conrtoller {
     }
 
     @RequestMapping(value = "ts")
-    public ModelAndView ts(Model model, @ModelAttribute(value = "somes") List<Order> somes) {
+    public ModelAndView ts(Model model, @ModelAttribute(value = "orders") List<Order> orders) {
 
-        model.addAttribute("somes", somes);
+        model.addAttribute("orders", orders);
         return new ModelAndView("testang.html");
     }
 
     @RequestMapping(value = "delete")
-    public ModelAndView clearCache(@ModelAttribute(value = "somes") List<Order> somes) {
+    public ModelAndView clearCache(@ModelAttribute(value = "orders") List<Order> orders) {
 
-        somes.clear();
+        orders.clear();
 
         return new ModelAndView("shop.html");
 

@@ -68,7 +68,7 @@ console.log(JSON.stringify(formJson));
 event.preventDefault();
 
 	$.ajax({
-    url: '/123',
+    url: '/addOrderToSession',
     type: 'POST',
     data: JSON.stringify(formJson),
     contentType: 'application/json; charset=utf-8',

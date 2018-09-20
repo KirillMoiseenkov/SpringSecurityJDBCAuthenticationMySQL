@@ -15,16 +15,16 @@
 
 
 </head>
-<body >
+<body>
 
 <div class="container" style="margin:50px">
 
-<div class="row col-sm-6"
+    <div class="row col-sm-6"
      style="border: 1px ridge #003312; padding:20px; float: none; margin: 0 auto;">
-    <h5 class="text-center" style="font-size: 25px">Авторизация</h5>
+        <h5 class="text-center" style="font-size: 25px">Авторизация</h5>
 
 
-    <div th:if="${param.error}">
+        <div th:if="${param.error}">
         <p style="color: red">UserName or PassWord is wrong. Please
             check again!</p>
 
@@ -46,9 +46,7 @@
     </form>
 
 
-
-
-</div>
+    </div>
 
     <p class="text-center"><a href="/shop" class="btn btn-primary">Перейти в маганзин без авторизации</a></p>
 
