@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5eeab232-32eb-453e-bccb-57b44c9b62f1" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/LAR.sql" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/config/auth/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/config/auth/SecurityConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/controllers/AnonymousController.java" afterPath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/controllers/ShopConrtoller.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/controllers/WebController.java" afterPath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/controllers/MainController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/dao/AdditionsPriceDaoImp.java" afterPath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/dao/AdditionsPriceDaoImp.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/models/AdditionsPrice.java" afterPath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/models/AdditionsPrice.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/services/AdditionalPriceService.java" afterPath="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/services/AdditionalPriceService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/shop.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/shop.html" />
-      <change beforePath="$PROJECT_DIR$/target/classes/js/app.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin.html" afterPath="$PROJECT_DIR$/target/classes/templates/admin.html" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MySQL.sql" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ShopConrtoller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ShopConrtoller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/controllers/ShopConrtoller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
@@ -33,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shop.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/shop.html">
+      <file leaf-file-name="LAR.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/LAR.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="20" column="3" lean-forward="false" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+            <state relative-caret-position="334">
+              <caret line="155" column="21" lean-forward="true" selection-start-line="155" selection-start-column="21" selection-end-line="155" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -119,16 +112,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bucket.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/bucket.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="50" column="10" lean-forward="false" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -172,8 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/models/product.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/dao/DaoProductImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/service/IService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/service/ProductService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/services/database/ProductService.java" />
@@ -223,6 +204,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/config/auth/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/controllers/ShopConrtoller.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/MySQL.sql" />
+        <option value="$PROJECT_DIR$/src/main/resources/LAR.sql" />
       </list>
     </option>
   </component>
@@ -388,6 +371,11 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\777\Desktop\FastQuestion-1.0\SpringSecurityJDBCAuthenticationMySQL\src\main\resources" />
+      <recent name="C:\Users\777\Desktop\FastQuestion-1.0\SpringSecurityJDBCAuthenticationMySQL\src\main\resources\js" />
+      <recent name="C:\Users\777\Desktop\FastQuestion-1.0\SpringSecurityJDBCAuthenticationMySQL\src\main\resources\templates" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.javasampleapproach.springsecurity.jdbcauthentication" />
     </key>
@@ -395,10 +383,6 @@
       <recent name="C:\Users\777\Desktop\FastQuestion-1.0\SpringSecurityJDBCAuthenticationMySQL\src\main\resources\templates" />
       <recent name="C:\Users\777\Desktop\FastQuestion-1.0\SpringSecurityJDBCAuthenticationMySQL\src\main\resources\js" />
       <recent name="C:\Users\kiril\OneDrive\Рабочий стол\SpringSecurityJDBCAuthenticationMySQL\src\main\resources\templates" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\777\Desktop\FastQuestion-1.0\SpringSecurityJDBCAuthenticationMySQL\src\main\resources\js" />
-      <recent name="C:\Users\777\Desktop\FastQuestion-1.0\SpringSecurityJDBCAuthenticationMySQL\src\main\resources\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -800,7 +784,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537454506098</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Поправил проблему с регистрацией,, добавил немного логов">
+      <created>1537456319688</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1537456319688</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -905,22 +896,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/services/IDAOService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javasampleapproach/springsecurity/jdbcauthentication/services/IProductDAOService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="27" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/classes/templates/script.js" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1311,6 +1286,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/MySQL.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/LAR.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="155" column="21" lean-forward="true" selection-start-line="155" selection-start-column="21" selection-end-line="155" selection-end-column="21" />
           <folding />
         </state>
       </provider>
