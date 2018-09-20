@@ -16,9 +16,9 @@ import java.util.List;
 
 @RestController
 @SessionAttributes({"orders"})
-public class AnonymousController {
+public class ShopConrtoller {
 
-    private static final Logger log = Logger.getLogger(AnonymousController.class);
+    private static final Logger log = Logger.getLogger(ShopConrtoller.class);
 
     @Autowired
     ProductService productService;
@@ -29,6 +29,13 @@ public class AnonymousController {
 
     @Autowired
     OrderService orderService;
+
+
+    @RequestMapping(value = "/")
+    public ModelAndView home() {
+
+        return new ModelAndView("shop.html");
+    }
 
 
     @ModelAttribute("orders")
@@ -130,8 +137,7 @@ public class AnonymousController {
     }
 
 
-
-    /*@GetMapping(value = "getProduct")
+    @GetMapping(value = "getProduct")
     public List<Product> getProduct(Model model) {
 
         List<Product> products = productService.getAll();
@@ -140,6 +146,7 @@ public class AnonymousController {
 
         return products;
 
-    }*/
+    }
+
 
 }

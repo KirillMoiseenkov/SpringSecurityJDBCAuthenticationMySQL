@@ -29,22 +29,22 @@
             <input type="text" class="form-control" id="delivery" placeholder="Введите цену доставки" name="delivery"/>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Изменить</button>
-</form>
+    </form>
 
     <br>
     <div>
         <h2>Добавить новый продукт</h2>
-    <form th:action="@{/addNewProduct}" method="post">
-        <div class="form-group">
-            <label for="name"> Имя </label>
-            <input type="text" class="form-control" id="name" placeholder="Введите название" name="name"/>
+        <form th:action="@{/addNewProduct}" method="post">
+            <div class="form-group">
+                <label for="name"> Имя </label>
+                <input type="text" class="form-control" id="name" placeholder="Введите название" name="name"/>
+            </div>
+            <div class="form-group">
+                <label for="price"> Цена </label>
+                <input type="text" class="form-control" id="price" placeholder="Введите цену" name="price"/>
         </div>
-        <div class="form-group">
-            <label for="price"> Цена </label>
-            <input type="text" class="form-control" id="price" placeholder="Введите цену" name="price"/>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Добавить</button>
-    </form>
+            <button type="submit" class="btn btn-primary btn-block">Добавить</button>
+        </form>
     </div>
 
 </div>

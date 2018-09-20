@@ -1,4 +1,3 @@
-/*
 package com.javasampleapproach.springsecurity.jdbcauthentication.models;
 
 import javax.persistence.*;
@@ -68,4 +67,3 @@ public class AdditionsPrice {
 
 }
 
-*/

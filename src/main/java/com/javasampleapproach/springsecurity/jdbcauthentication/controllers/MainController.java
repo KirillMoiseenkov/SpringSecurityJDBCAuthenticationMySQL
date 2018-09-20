@@ -4,25 +4,16 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@CrossOrigin
-public class WebController {
 
-    @RequestMapping(value = "/")
-    public String home() {
-        return "login";
-    }
+public class MainController {
 
-    @RequestMapping(value = "/user")
-    public String user() {
-        return "user";
-    }
 
     @RequestMapping(value = "/admin")
     public String admin() {
@@ -31,6 +22,7 @@ public class WebController {
 
     @RequestMapping(value = "/login")
     public String login() {
+
         return "login";
     }
 
@@ -39,22 +31,14 @@ public class WebController {
         return "403";
     }
 
-
-    @RequestMapping(value = "/index")
-    public String index() {
-        return "index";
-    }
-
-
-
-
     @RequestMapping(value = "/logout")
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
 
-        return "redirect:/login";
+
+        return new ModelAndView("shop.html");
     }
 }
